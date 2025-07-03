@@ -14,6 +14,14 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
+        <Link to="/add-books">Add Book</Link>{" "}
+      </li>
+      <li>
+        {" "}
+        <Link to="/borrow-books">Borrow Book</Link>{" "}
+      </li>
+      <li>
+        {" "}
         <Link to="/blog">Blog</Link>{" "}
       </li>
       <li>
@@ -24,7 +32,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-green-400">
+      <div className="navbar bg-gray-300">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,7 +69,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <a className="btn">Log in</a>
         </div>
       </div>
     </div>
