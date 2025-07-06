@@ -49,14 +49,14 @@ export default function BookCard({ book }: BookCardProps) {
                 <Link to={`/edit-book/${book._id}`}>Edit</Link>
             </Button>
             <Button
-                variant="destructive"
+                variant="outline"
                 size="sm"
                 onClick={() => handleDelete(book._id!)}
                 disabled={isDeleting}
             >
                 {isDeleting ? '...' : 'Delete'}
             </Button>
-            <Button variant="default" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild>
                 <Link to={`/borrow/${book._id}`}>Borrow</Link>
             </Button>
         </div>

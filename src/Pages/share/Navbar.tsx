@@ -18,7 +18,11 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <Link to="/borrow-books">Borrow Book</Link>{" "}
+        <Link to="/edit-book">Edit Book</Link>{" "}
+      </li>
+      <li>
+        {" "}
+        <Link to="/borrow-summary">Borrow Book</Link>{" "}
       </li>
       <li>
         {" "}

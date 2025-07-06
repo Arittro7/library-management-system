@@ -64,7 +64,7 @@ export function UpdateBookModal({ isOpen, onClose, defaultValues }: UpdateBookMo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-white">
         <DialogHeader>
           <DialogTitle>Edit Book</DialogTitle>
         </DialogHeader>

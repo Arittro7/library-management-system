@@ -6,38 +6,52 @@ import About from "../Pages/About/About";
 import Home from "../Pages/Home/Home";
 import AddBook from "../Pages/Books/AddBook";
 import BorrowSummary from "../Pages/Books/BorrowSummary";
+import EditBookPage from "@/Pages/Books/EditBookPage";
+import BorrowBookPage from "@/Pages/Books/BorrowBookPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
-    children:[
+    element: <Root />,
+    children: [
       {
-        path: '/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: '/books',
-        element: <Books></Books>
+        path: "/books",
+        element: <Books></Books>,
       },
       {
-        path: '/add-books',
-        element: <AddBook></AddBook>
+        path: "/add-books",
+        element: <AddBook></AddBook>,
       },
       {
-        path: '/borrow-books',
-        element: <BorrowSummary></BorrowSummary>
+        path: "/borrow-summary",
+        element: <BorrowSummary></BorrowSummary>,
       },
       {
-        path: '/blog',
-        element: <Blog></Blog>
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
-        path: '/about',
-        element: <About></About>
-      }
-    ]
-  }
-])
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/edit-book",
+        element: <EditBookPage></EditBookPage>,
+      },
+      {
+        path: "/edit-book/:id",
+        element: <EditBookPage></EditBookPage>,
+      },
+      {
+        path: "/borrow/:id",
+        element: <BorrowBookPage></BorrowBookPage>,
+      },
+    ],
+  },
+]);
 
-export default router
+export default router;

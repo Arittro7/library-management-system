@@ -1,10 +1,10 @@
 import AllBooks from "../Books/AllBook";
-import Banner from "./Banner";
+// import Banner from "./Banner";
 
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
+      {/* <Banner></Banner> */}
       <AllBooks></AllBooks>
     </div>
   );

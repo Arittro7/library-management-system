@@ -1,8 +1,9 @@
+import AllBooks from "./AllBook";
 
 const Books = () => {
   return (
     <div>
-      <h1>Books will display here</h1>
+      <AllBooks></AllBooks>
     </div>
   );
 };

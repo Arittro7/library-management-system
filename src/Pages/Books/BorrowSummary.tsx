@@ -1,38 +1,62 @@
+import { useGetAllBorrowSummaryQuery } from "@/redux/api/bookApi";
 
-// import { useGetAllBorrowSummaryQuery } from "@/redux/api/bookApi";
+interface IBorrowSummary {
+  book: {
+    title: string;
+    isbn: string;
+  };
+  totalQuantity: number;
+}
 
+export default function BorrowSummary() {
+  const { data, error, isLoading } = useGetAllBorrowSummaryQuery(undefined);
 
-// export function BorrowSummary() {
-//   const { data, error, isLoading } = useGetAllBorrowSummaryQuery(undefined);
-//   console.log("data is ", data);
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   
+  if (error) {
+    return <p className="text-center mt-10 text-red-500">Error loading borrow summary</p>;
+  }
+  const summaryList: IBorrowSummary[] = data?.date || [];
 
-//   if (isLoading) return <p>Loading...</p>;
-//   if (error) return <p>Error loading borrow summary</p>;
-
- 
-//   return (
-//     <div className="min-h-[calc(108vh-200px)]">
-//       <h2 className="text-2xl font-bold text-center justify-center mt-10 mb-4">Borrow Summary</h2>
-//       <hr />
-//       <table className="max-w-7xl mt-10 mx-auto border border-gray-300">
-//         <thead>
-//           <tr className="">
-//             <th className="border px-4 py-2">Book Title</th>
-//             <th className="border px-4 py-2">ISBN</th>
-//             <th className="border px-4 py-2">Total Quantity Borrowed</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {data?.data.map((item: any, index: number) => (
-//             <tr key={index} className="text-center">
-//               <td className="border px-4 py-2">{item.book.title}</td>
-//               <td className="border px-4 py-2">{item.book.isbn}</td>
-//               <td className="border px-4 py-2">{item.totalQuantity}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// }
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold text-center mb-8">Borrow Summary</h1>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full shadow-lg">
+          <thead className="bg-base-200 text-base">
+            <tr>
+              <th>Book Title</th>
+              <th>ISBN</th>
+              <th className="text-center">Total Borrowed</th>
+            </tr>
+          </thead>
+          <tbody>
+            {summaryList.length > 0 ? (
+              summaryList.map((item, index) => (
+                <tr key={index} className="hover">
+                  <td className="font-medium">{item.book.title}</td>
+                  <td>{item.book.isbn}</td>
+                  <td className="text-center font-bold text-xl">
+                    {item.totalQuantity}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={3} className="text-center py-8">
+                  No books have been borrowed yet.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
